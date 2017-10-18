@@ -3,9 +3,13 @@
  * Converts md files for the Mental Health and Wellness Knowledge Base
  * https://github.com/andy5995/mhwkb
  *
- * Usage: mhwkb_md2html <dir_with_md_files>
- *
  * Copyright 2017 Andy Alt <andy400-dev@yahoo.com>
+ * With contributions from
+ *
+ * Daniel Kelly <myself@danielkelly.me>
+ *
+ * and others mentioned in
+ * https://github.com/andy5995/mhwkb/blob/master/CONTRIBUTING.md
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,39 +29,7 @@
  *
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <dirent.h>
-#include <errno.h>
-#include <unistd.h>
-#include "template_functions.h"
-
-#define EXIT_INVALID_ARGS 2
-#define EXIT_OPENDIR_FAILURE 4
-
-#define VERSION ".0.0.10"
-#define DATE "2017-10-17"
-
-#define MAX_ARTICLES 500
-#define MAX_TAG_COUNT 500
-
-#define LINE_MAX_LEN 512
-
-#define HTML_FILENAME_MAX_LEN 512
-#define TAG_MAX_NUM 20
-#define TAG_MAX_LEN 80
-
-#define LINK_MAX_LEN 512
-#define TAGS_COMBINED_MAX_LEN 1280
-
-#define TEMPLATE_INDEX_PATH "../templates/index.html"
-#define TEMPLATE_ARTICLE_PATH "../templates/article.html"
-#define TEMPLATE_ARTLNK_PATH "../templates/article_link.html"
-
-void erase_char (char *str, char c);
-void trim_char (char *str, char c);
-void buf_check (const char *str, const int len);
+#include "main.h"
 
 int
 main (int argc, char **argv)
@@ -200,19 +172,19 @@ main (int argc, char **argv)
         {
           while (tags[i][0] != '[' && i == 0)
           {
-            erase_char (tags[i], tags[i][0]);
+            del_char_shift_left (tags[i], tags[i][0]);
           }
 
-          erase_char (tags[i], '[');
+          del_char_shift_left (tags[i], '[');
 
           /* if there's any white space between the [ and the " */
 
           while (tags[i][0] != '"')
           {
-            erase_char (tags[i], tags[i][0]);
+            del_char_shift_left (tags[i], tags[i][0]);
           }
 
-          erase_char (tags[i], '"');
+          del_char_shift_left (tags[i], '"');
 
           /* check to see if we're on the last tag */
 
@@ -288,7 +260,7 @@ main (int argc, char **argv)
           char tags_tag[TAGS_COMBINED_MAX_LEN + 1];
           memset(tags_tag, 0, TAGS_COMBINED_MAX_LEN + 1);
           int tag;
-          for (tag = 0; tag < tag_ctr - 1; tag++)
+          for (tag = 0; tag < tag_ctr; tag++)
           {
             strcpy (tag_html, tags[tag]);
             strcat (tag_html, ".html");
@@ -298,19 +270,9 @@ main (int argc, char **argv)
             char *link_template = render_template(TEMPLATE_ARTLNK_PATH, 2, link_keys, link_values);
 
             strcat (tags_tag, link_template);
-            strcat (tags_tag, ", ");
 
             free(link_template);
           }
-
-          const char *link_keys[] = { "link", "title" };
-          const char *link_values[] = { tag_html, tags[tag] };
-          char *link_template = render_template(TEMPLATE_ARTLNK_PATH, 2, link_keys, link_values);
-
-          strcat (tags_tag, link_template);
-          strcat (tags_tag, "<br /><br />");
-
-          free(link_template);
 
           // Render the article templates
           const char *article_keys[] = { "link", "title", "date", "article_links" };
@@ -421,7 +383,7 @@ main (int argc, char **argv)
   title_main[0] = '\0';
   if (exists (index_html) != 0)
   {
-    strcpy (title_main, "Home (Under Construction)");
+    strcpy (title_main, "Home");
     strcat (title_main, " - Mental Health and Wellness Knowledge Base");
   }
 
@@ -460,69 +422,4 @@ main (int argc, char **argv)
   }
 
   return 0;
-}
-
-/**
- * Erases characters from the beginning of a string
- * (i.e. shifts the remaining string to the left
- */
-void
-erase_char (char *str, char c)
-{
-  int inc = 0;
-
-  while (str[inc] == c)
-    inc++;
-
-  if (!inc)
-    return;
-
-  int n = strlen (str);
-  int i;
-
-  for (i = 0; i < n - inc; i++)
-    str[i] = str[i + inc];
-
-  str[n - inc] = '\0';
-
-  return;
-}
-
-/**
- * Trim a trailing character if present
- */
-void
-trim_char (char *str, char c)
-{
-  int len;
-  len = strlen(str) - 1;
-
-  if (str[len] != c)
-    return;
-
-  str[len] = '\0';
-
-  return;
-}
-
-void buf_check (const char *str, const int len)
-{
-  if (strlen (str) >= len)
-  {
-    printf ("error: Buffer overflow caught\n");
-    printf ("string length: %lu\n", strlen (str));
-
-    int pos = 0;
-    int chars_to_print = 0;
-    chars_to_print = (len >= 80) ? 80 : 10;
-
-    for (pos = 0; pos < chars_to_print; pos++)
-      printf ("%c", str[pos]);
-
-    printf ("\n");
-
-    exit (1);
-  }
-
-  return;
 }
