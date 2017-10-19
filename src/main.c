@@ -191,8 +191,8 @@ main (int argc, char **argv)
           if (i < tag_ctr - 1)
           {
             trim_char (tags[i], '"');
-            strcpy (tag_html, tags[i]);
-            strcat (tag_html, ".html");
+
+            sprintf (tag_html, "%s.html", tags[i]);
           }
           else
           {
@@ -204,8 +204,7 @@ main (int argc, char **argv)
             }
             /* if were' on the last tag, cut off the "]<br />" */
             tags[i][pos] = '\0';
-            strcpy (tag_html, tags[i]);
-            strcat (tag_html, ".html");
+            sprintf (tag_html, "%s.html", tags[i]);
           }
 
           const char *keys[] = { "link", "title" };
@@ -213,7 +212,7 @@ main (int argc, char **argv)
           buf_check (tags[i], TAG_MAX_LEN);
 
           const char *values[] = { tag_html, tags[i] };
-          char *article_link = render_template(TEMPLATE_ARTLNK_PATH, 2, keys, values);
+          char *article_link = render_template_file(TEMPLATE_ARTLNK_PATH, 2, keys, values);
 
           buf_check (article_link, LINK_MAX_LEN);
 
@@ -231,7 +230,7 @@ main (int argc, char **argv)
         // Render the article templates
         const char *keys[] = { "link", "title", "date", "article_links" };
         const char *values[] = { link_href, link_title, date_line, article_links };
-        char *article_template = render_template(TEMPLATE_ARTICLE_PATH, 4, keys, values);
+        char *article_template = render_template_file(TEMPLATE_ARTICLE_PATH, 4, keys, values);
         free(article_links);
 
         // Error if we are about to over flow MAX_ARTICLES
@@ -248,11 +247,10 @@ main (int argc, char **argv)
         for (i = 0; i < tag_ctr; i++)
         {
           char html_tag_file[HTML_FILENAME_MAX_LEN];
-          strcpy (html_tag_file, starting_dir);
-          strcat (html_tag_file, tags[i]);
-          strcat (html_tag_file, ".html");
+          sprintf (html_tag_file, "%s%s.html", starting_dir, tags[i]);
 
           char title_tag[256];
+
           strcpy (title_tag, tags[i]);
           strcat (title_tag, " (Under Construction)");
           strcat (title_tag, " - Mental Health and Wellness Knowledge Base");
@@ -267,7 +265,7 @@ main (int argc, char **argv)
 
             const char *link_keys[] = { "link", "title" };
             const char *link_values[] = { tag_html, tags[tag] };
-            char *link_template = render_template(TEMPLATE_ARTLNK_PATH, 2, link_keys, link_values);
+            char *link_template = render_template_file(TEMPLATE_ARTLNK_PATH, 2, link_keys, link_values);
 
             strcat (tags_tag, link_template);
 
@@ -277,7 +275,7 @@ main (int argc, char **argv)
           // Render the article templates
           const char *article_keys[] = { "link", "title", "date", "article_links" };
           const char *article_values[] = { link_href, link_title, date_line, tags_tag };
-          char *article_template = render_template(TEMPLATE_ARTICLE_PATH, 4, article_keys, article_values);
+          char *article_template = render_template_file(TEMPLATE_ARTICLE_PATH, 4, article_keys, article_values);
 
           // Save the file
           FILE *fp = fopen (html_tag_file, "a");
@@ -351,7 +349,7 @@ main (int argc, char **argv)
     // Render the index templates
     const char *index_keys[] = { "title", "body" };
     const char *index_values[] = { title_tag, tag_contents };
-    char *index_template = render_template (TEMPLATE_INDEX_PATH, 2, index_keys, index_values);
+    char *index_template = render_template_file (TEMPLATE_INDEX_PATH, 2, index_keys, index_values);
     free(tag_contents);
 
     FILE *fp = fopen (entry->d_name, "w+");
@@ -375,9 +373,7 @@ main (int argc, char **argv)
 
   // Write the index file
   char index_html[256];
-  strcpy (index_html, starting_dir);
-  strcat (index_html, "/");
-  strcat (index_html, "index.html");
+  sprintf (index_html, "%s/index.html", starting_dir);
 
   char title_main[256];
   title_main[0] = '\0';
@@ -411,7 +407,7 @@ main (int argc, char **argv)
 
   const char *index_keys[] = { "title", "body" };
   const char *index_values[] = { title_main, all_articles };
-  char *index_template = render_template(TEMPLATE_INDEX_PATH, 2, index_keys, index_values);
+  char *index_template = render_template_file(TEMPLATE_INDEX_PATH, 2, index_keys, index_values);
   fprintf (fp_index, "%s", index_template);
   free(index_template);
 
