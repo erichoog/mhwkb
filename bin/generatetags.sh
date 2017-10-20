@@ -15,6 +15,8 @@ sed -i 's/.html//g' $FILENAME_AND_PATH
 
 exit 0;
 
+## THIS IS THE OLD VERSION IN CASE THE HTML CHANGES
+
 # #!/bin/sh
 
 # CURRENT_DATE=`date +%Y-%m-%d`
