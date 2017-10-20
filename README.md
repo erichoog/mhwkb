@@ -4,19 +4,20 @@
 # mhwKB
 Mental Health and Wellness Knowledge Base
 
-## News
+The KB is at https://mhwkb.github.io/
 
-**2017-10-11**
-The web site is live: https://mhwkb.github.io/
-It needs enhancements to the design. I'll be adding more tickets soon. Anyone is welcome to join the [chat room](https://join.slack.com/t/mhwkb/shared_invite/enQtMjU3MjcwMTk4NjYzLTA0ZDc2YjAwMDJiNTU1YTBmYTViNmQ5MTdjOTk2MDA2MDMyMzNiYjU4ZWIzMTZlNmU4ZjFhNDg1MjQ5OGQyMjI).
+## Project and site updates
+For now, we're using generic GitHub RSS feeds<br />
+  [![RSS](images/rss_23x23.jpeg)](https://github.com/mhwkb/mhwkb.github.io/commits/master.atom)
+  [Web site updates](https://github.com/mhwkb/mhwkb.github.io/commits/master.atom)<br />
+  [![RSS](images/rss_23x23.jpeg)](https://github.com/andy5995/mhwkb/commits/master.atom)
+  [GitHub Project updates](https://github.com/andy5995/mhwkb/commits/master.atom)
 
-People are also encouraged to [add their favorite mental health links](https://github.com/andy5995/mhwkb/issues/5).
-
-## This project is in the planning stages ##
+Do we need a mailing list for updates?
 
 ## Goals
 * [increase awareness](http://www.ohchr.org/EN/NewsEvents/Pages/DisplayNews.aspx?NewsID=21689&LangID=E)
-* [Web site](https://github.com/andy5995/mhwkb/issues/6#issuecomment-334978501) should be low-maintenance.
+* Web site should be low-maintenance
   * no logins necessary, all changes to site will be submitted through the
   GitHub project page
   * links to external web sites added should have relatively fast load times,
@@ -30,13 +31,6 @@ People are also encouraged to [add their favorite mental health links](https://g
   * the potential for a more open discussion related to how the mental health
   care system could be improved
 
-## TODO
-* Collaborate / Determine the amount of interest in this project by other
-members of the open source community
-* ~~Create [web site](https://github.com/andy5995/mhwkb/issues/6#issuecomment-334978501)~~
-* ~~Program will be needed to parse data files that contains links~~
-* ~~Allow users to easily submit links~~
-
 ## Disclaimer
 The content on the web sites linked to from the knowledge base has been
 written by doctors, consumers, and a wide variety of people who have had
@@ -45,7 +39,7 @@ Among other things, the information on this site and external web sites and
 blogs consists of opinions or personal stories - and as such, treated like any
 other opinions or stories you may hear or read about on any subject.
 
-I, nor the contributors of the Mental Health and Wellness Knowledge Base,
+I (Andy Alt), nor the contributors of the _Mental Health and Wellness Knowledge Base_,
 necessarily endorse, believe, or agree with, the views presented by the various
 sites to which the Knowledge Base links.
 
@@ -56,7 +50,7 @@ and ADHD drugs) without a doctor's supervision. If you have firmly decided to
 discontinue medication without a doctor's supervision, you may find some guides
 to medication on Amazon or other book-selling sites.
 
-## About Me
+## About Andy Alt (Project Owner)
 I first received treatment for mental health issues (major depression, anxiety,
 PTSD) in 1991 (age 18). As a patient, I have seen numerous psychiatrists and
 psychotherapists, and have been prescribed (and used) many types of psychiatric
@@ -70,6 +64,9 @@ psychology.
 * [Contributing](CONTRIBUTING.md)
 * [List of Contributors](CONTRIBUTORS.md) (Please add your name if you
 have contributed)
+
+## FAQ
+* [FAQ](FAQ.md)
 
 ## Contact
 * Andy Alt (andy400-dev@yahoo.com)
