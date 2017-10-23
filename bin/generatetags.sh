@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CURRENT_DATE=`date +%Y-%m-%d`
-FILENAME_AND_PATH="tags_tmp.txt"
+FILENAME_AND_PATH="tags.txt"
 
 /bin/echo -e "List of Existing Tags\n" >> $FILENAME_AND_PATH
 /bin/echo -e "If you need suggestions for tags, this is a good list for reference.\n" >> $FILENAME_AND_PATH
