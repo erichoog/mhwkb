@@ -1,12 +1,10 @@
 // Angular SearchBoxApp Definition
 var searchBoxApp = angular.module('searchBoxApp', []);
 
-// Test Controller
-searchBoxApp.controller('TestCtrl', [TestCtrl]);
-
-function TestCtrl() {
-    console.log('Test controller loaded successfully.')
-};
+// Code to run when Angular App is started.
+searchBoxApp.run(function() {
+    console.log("SearchBoxApp has started successfully.")
+});
 
 // Search Content Directive
 searchBoxApp.directive('searchContent', function($timeout) {
