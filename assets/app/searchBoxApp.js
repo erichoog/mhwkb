@@ -1,44 +1,48 @@
-// Angular SearchBoxApp Definition
-var searchBoxApp = angular.module('searchBoxApp', []);
+(function () {
 
-// Code to run when Angular App is started.
-searchBoxApp.run(function() {
-    console.log("SearchBoxApp has started successfully.")
-});
+    // Angular SearchBoxApp Definition
+    var searchBoxApp = angular.module('searchBoxApp', []);
 
-// Search Content Directive
-searchBoxApp.directive('searchContent', function($timeout) {
-    return {
-        link: function(scope, element, attrs) {
+    // Code to run when Angular App is started.
+    searchBoxApp.run(function() {
+        console.log("SearchBoxApp has started successfully.")
+    });
 
-            var panelPrimary = Array.prototype.slice.call(element[0].children);
+    // Search Content Directive
+    searchBoxApp.directive('searchContent', function($timeout) {
+        return {
+            link: function(scope, element, attrs) {
 
-            function filterBy(value) {
-                panelPrimary.forEach(function(el) {
-                    el.className = searchForValues(value, el) !== -1 ? 'panel panel-primary' : 'panel panel-primary ng-hide';
+                var panelPrimary = Array.prototype.slice.call(element[0].children);
+
+                function filterBy(value) {
+                    panelPrimary.forEach(function(el) {
+                        el.className = searchForValues(value, el) !== -1 ? 'panel panel-primary' : 'panel panel-primary ng-hide';
+                    });
+                }
+
+                function searchForValues(value, panel)
+                {
+                    var returnVal = -1;
+                
+                    var panelHead = panel.children[0];
+                    var panelTitle = panelHead.children[0];
+                    var panelArticleTop = panelTitle.children[0];
+                    var panelArticleTitle = panelArticleTop.children[0];
+                    
+                    var result = panelArticleTitle.textContent.toLowerCase().indexOf(value.toLowerCase())
+                    if (result !== -1) return result;
+
+                    return returnVal;
+                }
+
+                scope.$watch(attrs.searchContent, function(newVal, oldVal) {
+                    if (newVal !== oldVal) {
+                        filterBy(newVal);
+                    }
                 });
             }
+        };
+    });
 
-            function searchForValues(value, panel)
-            {
-                var returnVal = -1;
-            
-                var panelHead = panel.children[0];
-                var panelTitle = panelHead.children[0];
-                var panelArticleTop = panelTitle.children[0];
-                var panelArticleTitle = panelArticleTop.children[0];
-                
-                var result = panelArticleTitle.textContent.toLowerCase().indexOf(value.toLowerCase())
-                if (result !== -1) return result;
-
-                return returnVal;
-            }
-
-            scope.$watch(attrs.searchContent, function(newVal, oldVal) {
-                if (newVal !== oldVal) {
-                    filterBy(newVal);
-                }
-            });
-        }
-    };
-});
+})();
