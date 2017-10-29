@@ -20,7 +20,7 @@ comments: true
                         <p><a href="{{ post.href }}">External Link: {{page.href}}</a></p>
 
                         {% for tag in page.tags %}
-                            <a class="tag label label-danger" <a href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}/">{{ tag }}</a>
+                            <a class="tag label label-danger" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}/">{{ tag }}</a>
                         {% endfor %}
                     </div>
                     {% include disqus_comments.html %}
