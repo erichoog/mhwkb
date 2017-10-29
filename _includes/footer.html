@@ -2,56 +2,12 @@
 
     <div class="container">
         <div class="text-center">
-          <a class="btn btn-danger" href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back Home</a>
+          <a class="btn btn-danger"  href="{{ "/" | relative_url }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Back Home</a>
           <a class="btn btn-danger" href="https://github.com/andy5995/mhwkb"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About</a>
           <a class="btn btn-danger" href="https://github.com/mhwkb/mhwkb.github.io/commits/master.atom"><i class="fa fa-rss"></i> RSS</a>
           <br /><br/>
         </div>
   </div>
-
-  <!-- This is in footer.html
-  <div class="wrapper">
-
-    {{ site.title | escape }}
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>
-            {% if site.author %}
-              {{ site.author | escape }}
-            {% else %}
-              {{ site.title | escape }}
-            {% endif %}
-            </li>
-            {% if site.email %}
-            <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
-            {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description | escape }}</p>
-      </div>
-    </div>
-
-  </div> -->
 
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
