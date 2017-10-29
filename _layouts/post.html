@@ -1,14 +1,15 @@
 ---
 layout: default
+comments: true
 ---
 
 <div class="container">
         <div class="text-center">
-    
+
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <a class="post-link" href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
+                        <a class="post-link" href="{{ page.url | relative_url }}#disqus_thread">{{ page.title | escape }}</a>
                     </a>
                     </div>
                 </div>
@@ -16,9 +17,9 @@ layout: default
                     <div class="article-bottom">
                         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
                         <p><span class="post-meta">{{ page.date | date: date_format }}</span></p>
-                    
+
                         <p><a href="{{ post.href }}">External Link: {{page.href}}</a></p>
-    
+
                         {% for tag in page.tags %}
                             <a class="tag label label-danger" href="">{{tag}}</a>
                         {% endfor %}
