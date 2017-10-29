@@ -9,5 +9,8 @@ tags:
 - side effects
 - conflicts-of-interest
 categories: EN
+href: http://a.co/0BuSDiT
 ---
-<a href="http://a.co/0BuSDiT">Side Effects: A Prosecutor, a Whistleblower, and a Bestselling Antidepressant on Trial</a>
+
+External Link:
+[Side Effects: A Prosecutor, a Whistleblower, and a Bestselling Antidepressant on Trial](http://a.co/0BuSDiT)
