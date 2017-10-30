@@ -1,6 +1,5 @@
 ---
 layout: default
-comments: true
 ---
 
 <div class="container">
@@ -9,7 +8,7 @@ comments: true
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <a class="post-link" href="{{ page.url | relative_url }}#disqus_thread">{{ page.title | escape }}</a>
+                        <a class="post-link" href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -23,7 +22,6 @@ comments: true
                             <a class="tag label label-danger" href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}/">{{ tag }}</a>
                         {% endfor %}
                     </div>
-                    {% include disqus_comments.html %}
                 </div>
             </div>
         </div>
