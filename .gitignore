@@ -3,4 +3,4 @@ src/*.o
 _site
 .sass-cache
 .jekyll-metadata
-
+/npm-debug.log
