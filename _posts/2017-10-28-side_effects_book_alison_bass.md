@@ -11,6 +11,3 @@ tags:
 categories: EN
 href: http://a.co/0BuSDiT
 ---
-
-External Link:
-[Side Effects: A Prosecutor, a Whistleblower, and a Bestselling Antidepressant on Trial](http://a.co/0BuSDiT)

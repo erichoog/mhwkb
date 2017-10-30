@@ -3,7 +3,7 @@ layout: post
 title:  "A Canvas of the Minds"
 date:   2017-10-27 22:57:09 -0400
 categories: jekyll update
-tags: 
+tags:
     - wordpress
     - personal_stories
     - collaborative
@@ -11,5 +11,3 @@ tags:
 categories: EN
 href: https://acanvasoftheminds.com/
 ---
-
-[A Canvas of the Minds](https://acanvasoftheminds.com/)<br />

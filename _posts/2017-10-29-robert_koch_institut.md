@@ -6,8 +6,6 @@ categories: DE
 tags:
     - Kinder- und Jugendgesundheit
     - Wissenschaft
-    - Statistikenwordpress
+    - Statistiken
 href: http://www.rki.de/DE/Content/Gesundheitsmonitoring/Themen/Psychische_Gesundheit/Psychische_Gesundheit_node.html
 ---
-
-[Robert Koch Institut][http://www.rki.de/DE/Content/Gesundheitsmonitoring/Themen/Psychische_Gesundheit/Psychische_Gesundheit_node.html)
