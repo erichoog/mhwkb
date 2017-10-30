@@ -34,6 +34,8 @@ plugins:
 tag_page_layout: tag
 tag_page_dir: tag
 
+permalink: pretty
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
