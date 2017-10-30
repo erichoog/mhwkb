@@ -1,33 +1,13 @@
 ---
 layout: default
 ---
-<h2>{{ page.tag }}</h2>
+<h2 align="center">post tags: {{ page.tag }}</h2>
 <div class="container">
-  <div class="text-center">
-{% for post in page.posts %}
-
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-          <div class="panel-title">
-            <a class="post-link" href="{{ post.url }}">{{ post.title  | escape }}</a>
-          </div>
-      </div>
-      <div class="panel-body">
-        <div class="article-bottom">
-          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-          <p><span class="post-meta">{{ page.date | date: date_format }}</span></p>
-
-          <p><a href="{{ post.href }}">External Link: {{page.href}}</a></p>
-
-          {% for tag in page.tags %}
-            <a class="tag label label-danger" <a href="/{{ site.tag_page_dir }}/{{ tag | slugify: 'pretty' }}/">{{ tag }}</a>
-          {% endfor %}
-        </div>
-      </div>
+    <div class="text-center">
+        {% for post in page.posts %}
+            {% include post_display.html %}
+        {% endfor %}
     </div>
-
-{% endfor %}
-  </div>
 </div>
 
 <!-- we probably don't want the tag cloud -->
